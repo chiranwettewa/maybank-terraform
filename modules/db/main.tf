@@ -15,7 +15,7 @@ resource "aws_db_instance" "mariadb_primary" {
 resource "aws_db_instance" "mariadb_replica" {
   allocated_storage    = 20
   engine               = "mariadb"
-  engine_version       = "10.6.10"
+  engine_version       = "10.6.23"
   instance_class       = "db.t2.micro"
   identifier           = "mariadb-replica"
   replicate_source_db  = aws_db_instance.mariadb_primary.arn

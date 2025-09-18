@@ -21,6 +21,12 @@ resource "aws_cloudfront_distribution" "cdn" {
     target_origin_id = "s3-bucket"
 
     viewer_protocol_policy = "redirect-to-https"
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
   }
 
   restrictions {
@@ -28,6 +34,8 @@ resource "aws_cloudfront_distribution" "cdn" {
       restriction_type = "none"
     }
   }
+
+    
 
   viewer_certificate {
     cloudfront_default_certificate = true
